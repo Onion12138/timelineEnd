@@ -17,6 +17,6 @@ public interface NewsDao extends JpaRepository<News, Integer> {
     List<News> findAllByPublishTimeAfter(Date date);
     Page<News> findAll(Pageable pageable);
 
-    @Query(value = "SELECT * FROM news ORDER BY timestamp DESC LIMIT ?1,?2" ,nativeQuery = true)
+    @Query(value = "SELECT * FROM news ORDER BY publish_time DESC LIMIT ?1,?2" ,nativeQuery = true)
     List<News> findNewsPage(Integer offset,Integer size);
 }
