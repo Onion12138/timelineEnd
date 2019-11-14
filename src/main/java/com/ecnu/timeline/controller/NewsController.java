@@ -2,6 +2,7 @@ package com.ecnu.timeline.controller;
 
 import com.ecnu.timeline.domain.News;
 import com.ecnu.timeline.domain.NewsRequest;
+import com.ecnu.timeline.service.FileStorageService;
 import com.ecnu.timeline.service.NewsService;
 import com.ecnu.timeline.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,15 @@ import org.springframework.data.domain.Sort;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -24,6 +32,10 @@ import java.util.List;
 public class NewsController {
     @Autowired
     private NewsService newsService;
+
+    @Autowired
+    private FileStorageService fileStorageService;
+
     @RequestMapping("/test")
     public String test(){
         return "hello";
@@ -40,8 +52,24 @@ public class NewsController {
             });
             throw new RuntimeException(sb.toString());
         }
-        newsService.addNews(newsRequest);
-        return new Result(null, 0, "发布成功");
+        return new Result(newsService.addNews(newsRequest), 0, "发布成功");
+    }
+
+    @PostMapping("/addPhoto")
+    public Result uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("newsId") Integer newsId) {
+
+        String fileName = fileStorageService.storeFile(file);
+
+        // 下载url --- photo
+        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/user/downloadFile/")
+                .path(fileName)
+                .toUriString();
+
+        ;
+        return new Result(newsService.addOnePhoto(fileDownloadUri,fileName,newsId),
+                          0,
+                          "success");
     }
 
     @GetMapping("/latestNews")

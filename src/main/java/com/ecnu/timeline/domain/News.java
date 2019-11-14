@@ -21,4 +21,5 @@ public class News {
     private Date publishTime;
     private String content;
     private String title;
+    private String fileDownloadUri; // pic url
 }
