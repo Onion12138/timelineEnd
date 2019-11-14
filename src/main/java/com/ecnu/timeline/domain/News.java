@@ -1,6 +1,7 @@
 package com.ecnu.timeline.domain;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -12,6 +13,7 @@ import java.util.Date;
  */
 @Data
 @Entity
+@Accessors(chain = true)
 @Table(name = "news")
 public class News {
     @Id

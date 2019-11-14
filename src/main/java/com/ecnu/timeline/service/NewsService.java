@@ -17,7 +17,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Formatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,9 +67,9 @@ public class NewsService {
     }
 
     public List<News> findLatestNews(String time){
-        long timestamp = Long.parseLong(time);
-        Date date = new Date(timestamp);
-        return newsDao.findAllByPublishTimeAfter(date);
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime localDateTime = LocalDateTime.parse(time,df);
+        return newsDao.findAllByPublishTimeAfter(localDateTime);
     }
 
     private News findOne(Integer newsId){
