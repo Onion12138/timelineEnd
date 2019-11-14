@@ -4,7 +4,7 @@
 
 # 需求
 
-![image-20191114202052426](/Users/root1/Library/Application Support/typora-user-images/image-20191114202052426.png)
+![avatar](./图片1.png)
 
 # 拓展功能
 
