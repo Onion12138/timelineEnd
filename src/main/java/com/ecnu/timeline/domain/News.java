@@ -3,6 +3,7 @@ package com.ecnu.timeline.domain;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -18,8 +19,10 @@ public class News {
     private Integer id;
     private String publisher;
     @Column(name = "publish_time")
-    private Date publishTime;
+    private LocalDateTime publishTime;
     private String content;
     private String title;
-    private String fileDownloadUri; // pic url
+    // 存储了两次
+    private String fileDownloadUri; // 附件
+    private String showUrl; // 展示用
 }

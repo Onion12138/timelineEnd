@@ -20,6 +20,7 @@ import java.nio.file.StandardCopyOption;
 @Service
 @Slf4j
 public class FileStorageService {
+
     private final Path fileStorageLocation;
 
     @Autowired
