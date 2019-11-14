@@ -50,12 +50,17 @@ public class NewsController {
         return new Result(latestNews, 0, "查找成功");
     }
 
+//    @GetMapping("/recentNews")
+//    public Result getRecentNews(@RequestParam(value = "page", defaultValue = "1")Integer page){
+//        Sort sort = new Sort(Sort.Direction.DESC, "publishTime");
+//        Pageable pageable = PageRequest.of(page -1, 5, sort);
+//        Page<News> pages = newsService.findAll(pageable);
+//        return new Result(pages, 0, "查找成功");
+//    }
     @GetMapping("/recentNews")
-    public Result getRecentNews(@RequestParam(value = "page", defaultValue = "1")Integer page){
-        Sort sort = new Sort(Sort.Direction.DESC, "publishTime");
-        Pageable pageable = PageRequest.of(page - 1, 5, sort);
-        Page<News> pages = newsService.findAll(pageable);
-        return new Result(pages, 0, "查找成功");
+    public Result getRecentNews(@RequestParam(value = "pageOffset",defaultValue = "0")Integer pageOffset){
+        List<News> pages=newsService.findRecentNews(pageOffset,5);
+        return new Result(pages,0,"查找成功");
     }
 
 }

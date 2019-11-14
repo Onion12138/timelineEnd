@@ -38,4 +38,8 @@ public class NewsService {
     public Page<News> findAll(Pageable pageable) {
         return newsDao.findAll(pageable);
     }
+
+    public List<News> findRecentNews(Integer offset,Integer size){
+        return newsDao.findNewsPage(offset,size);
+    }
 }
