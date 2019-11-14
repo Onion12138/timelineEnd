@@ -1,24 +1,9 @@
 spring:
-  jackson:
-    time-zone: GMT+8
-    date-format: yyyy-MM-dd HH:mm:ss
-    locale: zh_CN
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://120.77.176.55:3306/timeline?useUnicode=true&characterEncoding=utf8
     username: root
     password: root
-  jpa:
-    database: mysql
-    show-sql: true
-    # 附件情况
-  servlet:
-    multipart:
-      enabled: true
-      file-size-threshold: 2KB
-      max-file-size: 200MB
-      max-request-size: 215MB
-
 # 附件存放地址
 file:
   upload-dir: ./uploads

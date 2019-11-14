@@ -1,3 +1,17 @@
 spring:
   profiles:
     active: dev
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+    locale: zh_CN
+  jpa:
+    database: mysql
+    show-sql: true
+    # 附件情况
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 215MB
