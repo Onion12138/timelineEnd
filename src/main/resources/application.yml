@@ -8,3 +8,7 @@ spring:
     database: mysql
     show-sql: true
 
+# photo
+file:
+  upload-dir: ./uploads
+
