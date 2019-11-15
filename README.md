@@ -1,7 +1,9 @@
+[前端代码](https://github.com/TimGin117/timeline-front)
+
 # 效果截图
-
-
-
+![avatar](./效果图1.png)
+![avatar](./效果图2.png)
+![avatar](./效果图3.png)
 # 需求
 
 ![avatar](./图片1.png)
