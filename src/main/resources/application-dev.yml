@@ -8,7 +8,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://120.77.176.55:3306/timeline?useUnicode=true&characterEncoding=utf8
     username: root
-    password: root
+    password: 
 
 # 附件存放地址
 file:
