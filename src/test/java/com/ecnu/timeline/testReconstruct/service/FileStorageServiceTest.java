@@ -1,7 +1,7 @@
-package com.ecnu.timeline.service;
+package com.ecnu.timeline.testReconstruct.service;
 
-import utils.EmptyTest;
 import com.ecnu.timeline.config.FileStorageConfig;
+import com.ecnu.timeline.service.FileStorageServiceImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,20 +9,26 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.mock.web.MockMultipartFile;
+import utils.EmptyTest;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+/**
+ * @author onion
+ * @date 2019/11/29 -10:52 上午
+ */
 @EmptyTest(includeFilters = @ComponentScan.Filter(
         type = FilterType.ASSIGNABLE_TYPE,
         classes = FileStorageServiceImpl.class
 ))
 @EnableConfigurationProperties(FileStorageConfig.class)
-class FileStorageServiceTest {
+public class FileStorageServiceTest {
     @Autowired
     private FileStorageServiceImpl fileStorageService;
 
@@ -72,3 +78,4 @@ class FileStorageServiceTest {
         assertThrows(RuntimeException.class, () -> fileStorageService.loadFileAsResource("456"));
     }
 }
+

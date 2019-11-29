@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,7 +17,6 @@ import java.util.List;
 public interface NewsDao extends JpaRepository<News, Integer> {
     List<News> findAllByPublishTimeAfter(LocalDateTime publishTime);
     Page<News> findAll(Pageable pageable);
-
     @Query(value = "SELECT * FROM news ORDER BY publish_time DESC LIMIT ?1,?2" ,nativeQuery = true)
     List<News> findNewsPage(Integer offset,Integer size);
 }

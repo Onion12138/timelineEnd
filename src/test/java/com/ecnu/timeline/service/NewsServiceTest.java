@@ -3,37 +3,29 @@ package com.ecnu.timeline.service;
 import com.ecnu.timeline.dao.NewsDao;
 import com.ecnu.timeline.domain.News;
 import com.ecnu.timeline.domain.NewsRequest;
-import jdk.jfr.consumer.RecordedFrame;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
-import org.springframework.mock.web.MockMultipartFile;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @DataJpaTest(includeFilters = @ComponentScan.Filter(
         type = FilterType.ASSIGNABLE_TYPE,
-        classes = NewsService.class
+        classes = NewsServiceImpl.class
 ))
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class NewsServiceTest {
     @Autowired
-    private NewsService newsService;
+    private NewsServiceImpl newsService;
 
     @Autowired
     private NewsDao newsDao;

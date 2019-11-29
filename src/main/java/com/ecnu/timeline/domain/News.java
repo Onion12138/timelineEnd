@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * @author onion
@@ -20,8 +20,9 @@ public class News {
     private Integer id;
     private String publisher;
     @Column(name = "publish_time")
-    private Date publishTime;
+    private LocalDateTime publishTime;
     private String content;
     private String title;
     private String fileDownloadUri; // pic url
+    private String showUrl;
 }

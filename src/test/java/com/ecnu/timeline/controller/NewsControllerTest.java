@@ -4,8 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.ecnu.timeline.config.FileMultipartResolver;
 import com.ecnu.timeline.config.FileStorageConfig;
 import com.ecnu.timeline.domain.News;
-import com.ecnu.timeline.service.FileStorageService;
-import com.ecnu.timeline.service.NewsService;
+import com.ecnu.timeline.service.FileStorageServiceImpl;
+import com.ecnu.timeline.service.NewsServiceImpl;
 import com.ecnu.timeline.vo.Result;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,6 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.Map;
 
@@ -37,10 +36,10 @@ class NewsControllerTest {
     private FileStorageConfig fileStorageConfig;
 
     @MockBean
-    private NewsService newsService;
+    private NewsServiceImpl newsService;
 
     @MockBean
-    private FileStorageService storageService;
+    private FileStorageServiceImpl storageService;
 
     @Test
     void addNews() throws Exception {
