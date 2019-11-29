@@ -33,6 +33,7 @@ class NewsServiceTest {
     Integer insertTestNews() {
         News news = new News()
                 .setPublisher("yuyuko")
+
                 .setTitle("测试贴标题")
                 .setContent("测试贴内容")
                 .setPublishTime(LocalDateTime.now());
